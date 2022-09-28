@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    id:{
+    userId:{
         type: String,
         required: true,
         unique: true,
@@ -18,15 +18,15 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    buzs: {
+    house: {
         type: Array,
         default: [],
     },
-    stocks: {
+    car: {
         type: Array,
         default: [],
     },
-    realEstates: {
+    credit: {
         type: Array,
         default: [],
     },
