@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    work:{
+    prof:{
         type: String,
         required: true,
     },
@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema({
     },
     balance: {
         type: Number,
-        default: 0,
+        default: 100,
     },
     house: {
         type: Array,
@@ -27,6 +27,18 @@ const UserSchema = new mongoose.Schema({
         default: [],
     },
     credit: {
+        type: Array,
+        default: [],
+    },
+    bizs: {
+        type: Array,
+        default: [],
+    },
+    manager: {
+        type: Array,
+        default: [],
+    },
+    estate: {
         type: Array,
         default: [],
     },

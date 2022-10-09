@@ -5,19 +5,19 @@ const RealEstateSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+    realEstatePrice:{
+        type: Number,
         required: true,
     },
-    realEstatePrice: {
+    location:{
+        type: String,
+        required: true,
+    },
+    profit: {
         type: Number,
         minimum: 0,
     },
-    realEstateProfit: {
-        type: Number,
-        minimum: 0,
-    },
+    imageUrl: String,
 },{
     timestamps:true,
 },

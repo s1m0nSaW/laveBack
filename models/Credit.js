@@ -1,27 +1,19 @@
 import mongoose from "mongoose";
 
-const BusSchema = new mongoose.Schema({
-    bizName:{
+const CreditSchema = new mongoose.Schema({
+    creditName:{
         type: String,
         required: true,
     },
-    bizPrice:{
+    creditAmount:{
         type: Number,
         required: true,
     },
-    bizType:{
+    creditTerm:{
         type: Number,
         required: true,
     },
-    location:{
-        type: String,
-        required: true,
-    },
-    workersCount:{
-        type: Number,
-        required: true,
-    },
-    profit:{
+    creditPercent:{
         type: Number,
         required: true,
     },
@@ -31,4 +23,4 @@ const BusSchema = new mongoose.Schema({
 },
 );
 
-export default mongoose.model('Business', BusSchema);
+export default mongoose.model('Credit', CreditSchema);

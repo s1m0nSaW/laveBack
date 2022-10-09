@@ -1,10 +1,11 @@
-import BusinessModel from "../models/Business.js";
+import ProfModel from "../models/Prof.js";
 
 export const getAll = async (req,res) => {
     try {
-        const bizs = await BusinessModel.find().exec();
+        const profs = await ProfModel
+        .find().exec();
 
-        res.json(bizs);
+        res.json(profs);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -15,9 +16,10 @@ export const getAll = async (req,res) => {
 
 export const getOne = async (req,res) => {
     try {
-        const business = await BusinessModel.find({ _id: req.params.id}).exec();
+        const prof = await ProfModel
+        .find({ _id: req.params.id}).exec();
 
-        res.json(business);
+        res.json(prof);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -28,19 +30,17 @@ export const getOne = async (req,res) => {
 
 export const create = async (req,res) => {
     try {
-        const doc = new BusinessModel({
-            bizName: req.body.bizName,
-            bizPrice: req.body.bizPrice,
-            bizType: req.body.bizType,
-            location: req.body.location,
-            workersCount: req.body.workersCount,
-            profit: req.body.profit,
-            imageUrl: req.body.imageUrl,
+        const doc = new ProfModel
+        ({
+            profName: req.body.profName,
+            salary: req.body.salary,
+            childCount: req.body.childCount,
+            childExp: req.body.childExp,
         });
 
-        const business = await doc.save();
+        const prof = await doc.save();
 
-        res.json(business);
+        res.json(prof);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -51,16 +51,14 @@ export const create = async (req,res) => {
 
 export const update = async (req,res) => {
     try {
-        await BusinessModel.updateOne({
+        await ProfModel
+        .updateOne({
             _id: req.params.id
         },{
-            bizName: req.body.bizName,
-            bizPrice: req.body.bizPrice,
-            bizType: req.body.bizType,
-            location: req.body.location,
-            workersCount: req.body.workersCount,
-            profit: req.body.profit,
-            imageUrl: req.body.imageUrl,
+            profName: req.body.profName,
+            salary: req.body.salary,
+            childCount: req.body.childCount,
+            childExp: req.body.childExp,
         });
 
         res.json({
@@ -76,7 +74,8 @@ export const update = async (req,res) => {
 
 export const remove = async (req,res) => {
     try {
-        BusinessModel.findOneAndDelete(
+        ProfModel
+        .findOneAndDelete(
             {
                 _id: req.params.id,
             },
@@ -90,7 +89,7 @@ export const remove = async (req,res) => {
 
                 if (!doc){
                     return res.status(404).json({
-                        message: 'Бизнес не найден'
+                        message: 'Профессия не найдена'
                     });
                 }
 

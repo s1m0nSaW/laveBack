@@ -1,10 +1,10 @@
-import BusinessModel from "../models/Business.js";
+import CreditModel from "../models/Credit.js";
 
 export const getAll = async (req,res) => {
     try {
-        const bizs = await BusinessModel.find().exec();
+        const credits = await CreditModel.find().exec();
 
-        res.json(bizs);
+        res.json(credits);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -15,9 +15,9 @@ export const getAll = async (req,res) => {
 
 export const getOne = async (req,res) => {
     try {
-        const business = await BusinessModel.find({ _id: req.params.id}).exec();
+        const credit = await CreditModel.find({ _id: req.params.id}).exec();
 
-        res.json(business);
+        res.json(credit);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -28,19 +28,17 @@ export const getOne = async (req,res) => {
 
 export const create = async (req,res) => {
     try {
-        const doc = new BusinessModel({
-            bizName: req.body.bizName,
-            bizPrice: req.body.bizPrice,
-            bizType: req.body.bizType,
-            location: req.body.location,
-            workersCount: req.body.workersCount,
-            profit: req.body.profit,
+        const doc = new CreditModel({
+            creditName: req.body.creditName,
+            creditAmount: req.body.creditAmount,
+            creditPercent: req.body.creditPercent,
+            creditTerm: req.body.creditTerm,
             imageUrl: req.body.imageUrl,
         });
 
-        const business = await doc.save();
+        const credit = await doc.save();
 
-        res.json(business);
+        res.json(credit);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -51,15 +49,13 @@ export const create = async (req,res) => {
 
 export const update = async (req,res) => {
     try {
-        await BusinessModel.updateOne({
+        await CreditModel.updateOne({
             _id: req.params.id
         },{
-            bizName: req.body.bizName,
-            bizPrice: req.body.bizPrice,
-            bizType: req.body.bizType,
-            location: req.body.location,
-            workersCount: req.body.workersCount,
-            profit: req.body.profit,
+            creditName: req.body.creditName,
+            creditAmount: req.body.creditAmount,
+            creditPercent: req.body.creditPercent,
+            creditTerm: req.body.creditTerm,
             imageUrl: req.body.imageUrl,
         });
 
@@ -76,7 +72,7 @@ export const update = async (req,res) => {
 
 export const remove = async (req,res) => {
     try {
-        BusinessModel.findOneAndDelete(
+        CreditModel.findOneAndDelete(
             {
                 _id: req.params.id,
             },
@@ -90,7 +86,7 @@ export const remove = async (req,res) => {
 
                 if (!doc){
                     return res.status(404).json({
-                        message: 'Бизнес не найден'
+                        message: 'Недвижимость не найдена'
                     });
                 }
 

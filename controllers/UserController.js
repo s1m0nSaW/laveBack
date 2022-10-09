@@ -7,12 +7,15 @@ export const register =  async (req,res)=>{
 
     const doc = new UserModel({
         firstName: req.body.firstName,
-        work: req.body.work,
+        prof: req.body.prof,
         userId: req.body.userId,
         balance: req.body.balance,
         house: req.body.house.split(','),
         car: req.body.car.split(','),
         credit: req.body.credit.split(','),
+        bizs: req.body.bizs.split(','),
+        manager: req.body.manager.split(','),
+        estate: req.body.estate.split(','),
     });
 
     const user = await doc.save();
@@ -68,7 +71,7 @@ export const login = async (req,res)=>{
 
 export const getMe = async (req,res)=>{
     try{
-        const user = await UserModel.findById(req.userId);
+        const user = await UserModel.findOne( {userId: req.body.userId});
 
         if (!user) {
             return res.status(404).json({

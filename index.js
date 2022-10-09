@@ -6,6 +6,12 @@ import checkAuth from './utils/checkAuth.js';
 
 import * as UserController from './controllers/UserController.js';
 import * as BusinessController from './controllers/BusinessController.js';
+import * as RealEstateController from './controllers/RealEstateController.js';
+import * as CarController from './controllers/CarController.js';
+import * as CreditController from './controllers/CreditController.js';
+import * as HouseController from './controllers/HouseController.js';
+import * as ManagerController from './controllers/ManagerController.js';
+import * as ProfController from './controllers/ProfController.js';
 
 const URL = 'mongodb+srv://admin:cK6e_CNLJc-8K9p@cluster0.mjknbht.mongodb.net/blog?retryWrites=true&w=majority';
 
@@ -33,13 +39,51 @@ app.use('/uploads', express.static('uploads'));
 
 app.post('/auth/login', UserController.login);
 app.post('/auth/register', UserController.register);
-app.get('/auth/me', checkAuth, UserController.getMe);
+app.get('/auth/me',UserController.getMe);
 
-app.get('/bizs', checkAuth, BusinessController.getAll);
-app.get('/bizs/:id', checkAuth, BusinessController.getOne);
-app.post('/bizs', checkAuth, BusinessController.create);
-app.delete('/bizs/:id', checkAuth, BusinessController.remove);
-app.patch('/bizs/:id', checkAuth, BusinessController.update);
+app.get('/bizs', BusinessController.getAll);
+app.get('/bizs/:id',BusinessController.getOne);
+app.post('/bizs',BusinessController.create); //добавить checkAuth
+app.delete('/bizs/:id',BusinessController.remove);
+app.patch('/bizs/:id',BusinessController.update);
+
+app.get('/estates', RealEstateController.getAll);
+app.get('/estates/:id',RealEstateController.getOne);
+app.post('/estates',RealEstateController.create); 
+app.delete('/estates/:id',RealEstateController.remove);
+app.patch('/estates/:id',RealEstateController.update);
+
+app.get('/cars', CarController.getAll);
+app.get('/cars/:id',CarController.getOne);
+app.post('/cars',CarController.create); 
+app.delete('/cars/:id',CarController.remove);
+app.patch('/cars/:id',CarController.update);
+
+app.get('/credits', CreditController.getAll);
+app.get('/credits/:id',CreditController.getOne);
+app.post('/credits',CreditController.create); 
+app.delete('/credits/:id',CreditController.remove);
+app.patch('/credits/:id',CreditController.update);
+
+app.get('/houses', HouseController.getAll);
+app.get('/houses/:id',HouseController.getOne);
+app.post('/houses',HouseController.create); 
+app.delete('/houses/:id',HouseController.remove);
+app.patch('/houses/:id',HouseController.update);
+
+app.get('/profs', ProfController.getAll);
+app.get('/profs/:id',ProfController.getOne);
+app.post('/profs',ProfController.create); 
+app.delete('/profs/:id',ProfController.remove);
+app.patch('/profs/:id',ProfController.update);
+
+app.get('/managers', ManagerController.getAll);
+app.get('/managers/my', ManagerController.getMy);
+app.get('/managers/:id',ManagerController.getOne);
+app.post('/managers',ManagerController.create); 
+app.delete('/managers/:id',ManagerController.remove);
+app.patch('/managers/:id',ManagerController.update);
+
 
 app.listen(4444, (err) => {
     if (err) {

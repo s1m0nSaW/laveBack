@@ -1,10 +1,22 @@
-import BusinessModel from "../models/Business.js";
+import ManagerModel from "../models/Manager.js";
 
 export const getAll = async (req,res) => {
     try {
-        const bizs = await BusinessModel.find().exec();
+        const managers = await ManagerModel.find().exec();
 
-        res.json(bizs);
+        res.json(managers);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            message: 'Не удалось найти',
+        });
+    }
+}
+
+export const getMy = async (req,res) => {
+    try {
+        const managers = await ManagerModel.find({ userId: req.body.userId}).exec();
+        res.json(managers);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -15,9 +27,9 @@ export const getAll = async (req,res) => {
 
 export const getOne = async (req,res) => {
     try {
-        const business = await BusinessModel.find({ _id: req.params.id}).exec();
+        const manager = await ManagerModel.find({ _id: req.params.id}).exec();
 
-        res.json(business);
+        res.json(manager);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -28,19 +40,18 @@ export const getOne = async (req,res) => {
 
 export const create = async (req,res) => {
     try {
-        const doc = new BusinessModel({
-            bizName: req.body.bizName,
-            bizPrice: req.body.bizPrice,
+        const doc = new ManagerModel({
+            managerName: req.body.managerName,
+            managerPrice: req.body.managerPrice,
             bizType: req.body.bizType,
-            location: req.body.location,
-            workersCount: req.body.workersCount,
-            profit: req.body.profit,
-            imageUrl: req.body.imageUrl,
+            bizsCount: req.body.bizsCount,
+            bizs: req.body.bizs,
+            userId: req.body.userId,
         });
 
-        const business = await doc.save();
+        const manager = await doc.save();
 
-        res.json(business);
+        res.json(manager);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -51,16 +62,15 @@ export const create = async (req,res) => {
 
 export const update = async (req,res) => {
     try {
-        await BusinessModel.updateOne({
+        await ManagerModel.updateOne({
             _id: req.params.id
         },{
-            bizName: req.body.bizName,
-            bizPrice: req.body.bizPrice,
+            managerName: req.body.managerName,
+            managerPrice: req.body.managerPrice,
             bizType: req.body.bizType,
-            location: req.body.location,
-            workersCount: req.body.workersCount,
-            profit: req.body.profit,
-            imageUrl: req.body.imageUrl,
+            bizsCount: req.body.bizsCount,
+            bizs: req.body.bizs,
+            userId: req.body.userId,
         });
 
         res.json({
@@ -76,7 +86,7 @@ export const update = async (req,res) => {
 
 export const remove = async (req,res) => {
     try {
-        BusinessModel.findOneAndDelete(
+        ManagerModel.findOneAndDelete(
             {
                 _id: req.params.id,
             },
@@ -90,7 +100,7 @@ export const remove = async (req,res) => {
 
                 if (!doc){
                     return res.status(404).json({
-                        message: 'Бизнес не найден'
+                        message: 'Менеджер не найден'
                     });
                 }
 

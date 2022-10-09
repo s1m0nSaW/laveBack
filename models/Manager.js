@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
-const BusSchema = new mongoose.Schema({
-    bizName:{
+const ManagerSchema = new mongoose.Schema({
+    managerName:{
         type: String,
         required: true,
     },
-    bizPrice:{
+    managerPrice:{
         type: Number,
         required: true,
     },
@@ -13,22 +13,21 @@ const BusSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    location:{
+    bizsCount:{
+        type: Number,
+        required: true,
+    },
+    bizs: {
+        type: Array,
+        default: [],
+    },
+    userId:{
         type: String,
         required: true,
     },
-    workersCount:{
-        type: Number,
-        required: true,
-    },
-    profit:{
-        type: Number,
-        required: true,
-    },
-    imageUrl: String,
 },{
     timestamps:true,
 },
 );
 
-export default mongoose.model('Business', BusSchema);
+export default mongoose.model('Manager', ManagerSchema);

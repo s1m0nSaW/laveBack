@@ -1,10 +1,11 @@
-import BusinessModel from "../models/Business.js";
+import CarModel from "../models/Car.js";
 
 export const getAll = async (req,res) => {
     try {
-        const bizs = await BusinessModel.find().exec();
+        const cars = await CarModel
+        .find().exec();
 
-        res.json(bizs);
+        res.json(cars);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -15,9 +16,10 @@ export const getAll = async (req,res) => {
 
 export const getOne = async (req,res) => {
     try {
-        const business = await BusinessModel.find({ _id: req.params.id}).exec();
+        const car = await CarModel
+        .find({ _id: req.params.id}).exec();
 
-        res.json(business);
+        res.json(car);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -28,19 +30,17 @@ export const getOne = async (req,res) => {
 
 export const create = async (req,res) => {
     try {
-        const doc = new BusinessModel({
-            bizName: req.body.bizName,
-            bizPrice: req.body.bizPrice,
-            bizType: req.body.bizType,
-            location: req.body.location,
-            workersCount: req.body.workersCount,
-            profit: req.body.profit,
+        const doc = new CarModel
+        ({
+            carName: req.body.carName,
+            price: req.body.price,
+            carExp: req.body.carExp,
             imageUrl: req.body.imageUrl,
         });
 
-        const business = await doc.save();
+        const car = await doc.save();
 
-        res.json(business);
+        res.json(car);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -51,15 +51,13 @@ export const create = async (req,res) => {
 
 export const update = async (req,res) => {
     try {
-        await BusinessModel.updateOne({
+        await CarModel
+        .updateOne({
             _id: req.params.id
         },{
-            bizName: req.body.bizName,
-            bizPrice: req.body.bizPrice,
-            bizType: req.body.bizType,
-            location: req.body.location,
-            workersCount: req.body.workersCount,
-            profit: req.body.profit,
+            carName: req.body.carName,
+            price: req.body.price,
+            carExp: req.body.carExp,
             imageUrl: req.body.imageUrl,
         });
 
@@ -76,7 +74,8 @@ export const update = async (req,res) => {
 
 export const remove = async (req,res) => {
     try {
-        BusinessModel.findOneAndDelete(
+        CarModel
+        .findOneAndDelete(
             {
                 _id: req.params.id,
             },
@@ -90,7 +89,7 @@ export const remove = async (req,res) => {
 
                 if (!doc){
                     return res.status(404).json({
-                        message: 'Бизнес не найден'
+                        message: 'Машина не найдена'
                     });
                 }
 
