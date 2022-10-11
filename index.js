@@ -37,13 +37,21 @@ app.use(express.json());
 app.use(cors());
 app.use('/uploads', express.static('uploads'));
 
+app.post('/upload', upload.single('image'), (req,res) => {
+    res.json({
+        url: `/uploads/${req.file.originalname}`,
+    });
+});
+
 app.post('/auth/login', UserController.login);
 app.post('/auth/register', UserController.register);
 app.get('/auth/me',UserController.getMe);
+app.patch('/auth/:id',UserController.update);
+app.delete('/auth/:id',UserController.remove);
 
 app.get('/bizs', BusinessController.getAll);
 app.get('/bizs/:id',BusinessController.getOne);
-app.post('/bizs',BusinessController.create); //добавить checkAuth
+app.post('/bizs',BusinessController.create);
 app.delete('/bizs/:id',BusinessController.remove);
 app.patch('/bizs/:id',BusinessController.update);
 

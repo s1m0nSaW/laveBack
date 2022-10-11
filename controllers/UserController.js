@@ -39,6 +39,35 @@ export const register =  async (req,res)=>{
     }
 };
 
+export const update =  async (req,res)=>{
+    try{
+        await UserModel.updateOne({
+            _id: req.params.id
+        },{
+            firstName: req.body.firstName,
+            prof: req.body.prof,
+            userId: req.body.userId,
+            balance: req.body.balance,
+            house: req.body.house.split(','),
+            car: req.body.car.split(','),
+            credit: req.body.credit.split(','),
+            bizs: req.body.bizs.split(','),
+            manager: req.body.manager.split(','),
+            estate: req.body.estate.split(','),
+        });
+    
+        res.json({
+            success: true,
+        });
+    
+    } catch(err){
+        console.log(err);
+        res.status(500).json({
+            message: 'Не удалось зарегистрироваться',
+        });
+    }
+};
+
 export const login = async (req,res)=>{
     try{
         const user = await UserModel.findOne({ userId: req.body.userId });
@@ -87,3 +116,36 @@ export const getMe = async (req,res)=>{
         });
     }
 };
+
+export const remove = async (req,res) => {
+    try {
+        UserModel.findOneAndDelete(
+            {
+                _id: req.params.id,
+            },
+            (err, doc) => {
+                if (err){
+                    console.log(err);
+                    return res.status(500).json({
+                        message: 'Не удалось удалить',
+                    });
+                }
+
+                if (!doc){
+                    return res.status(404).json({
+                        message: 'Пользователь не найден'
+                    });
+                }
+
+                res.json({
+                    success: true
+                });
+            }
+        );
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            message: 'Проблема с удалением',
+        });
+    }
+}

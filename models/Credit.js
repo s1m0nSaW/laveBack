@@ -9,7 +9,15 @@ const CreditSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    creditTerm:{
+    creditTotal:{
+        type: Number,
+        required: true,
+    },
+    creditPeriod:{
+        type: Number,
+        required: true,
+    },
+    creditPay:{
         type: Number,
         required: true,
     },

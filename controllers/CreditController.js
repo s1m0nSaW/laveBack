@@ -31,8 +31,10 @@ export const create = async (req,res) => {
         const doc = new CreditModel({
             creditName: req.body.creditName,
             creditAmount: req.body.creditAmount,
+            creditTotal: req.body.creditTotal,
+            creditPeriod: req.body.creditPeriod,
+            creditPay: req.body.creditPay,
             creditPercent: req.body.creditPercent,
-            creditTerm: req.body.creditTerm,
             imageUrl: req.body.imageUrl,
         });
 
@@ -54,8 +56,10 @@ export const update = async (req,res) => {
         },{
             creditName: req.body.creditName,
             creditAmount: req.body.creditAmount,
+            creditTotal: req.body.creditTotal,
+            creditPeriod: req.body.creditPeriod,
+            creditPay: req.body.creditPay,
             creditPercent: req.body.creditPercent,
-            creditTerm: req.body.creditTerm,
             imageUrl: req.body.imageUrl,
         });
 

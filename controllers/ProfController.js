@@ -36,6 +36,8 @@ export const create = async (req,res) => {
             salary: req.body.salary,
             childCount: req.body.childCount,
             childExp: req.body.childExp,
+            car: req.body.car,
+            house: req.body.house,
         });
 
         const prof = await doc.save();

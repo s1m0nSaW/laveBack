@@ -17,6 +17,14 @@ const ProfSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    car:{
+        type: String,
+        required: true,
+    },
+    house:{
+        type: String,
+        required: true,
+    },
 },{
     timestamps:true,
 },
