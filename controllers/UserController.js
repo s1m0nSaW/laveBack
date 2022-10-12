@@ -10,12 +10,10 @@ export const register =  async (req,res)=>{
         prof: req.body.prof,
         userId: req.body.userId,
         balance: req.body.balance,
+        age: req.body.age,
         house: req.body.house.split(','),
         car: req.body.car.split(','),
-        credit: req.body.credit.split(','),
         bizs: req.body.bizs.split(','),
-        manager: req.body.manager.split(','),
-        estate: req.body.estate.split(','),
     });
 
     const user = await doc.save();
@@ -48,12 +46,10 @@ export const update =  async (req,res)=>{
             prof: req.body.prof,
             userId: req.body.userId,
             balance: req.body.balance,
+            age: req.body.age,
             house: req.body.house.split(','),
             car: req.body.car.split(','),
-            credit: req.body.credit.split(','),
             bizs: req.body.bizs.split(','),
-            manager: req.body.manager.split(','),
-            estate: req.body.estate.split(','),
         });
     
         res.json({

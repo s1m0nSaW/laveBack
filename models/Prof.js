@@ -13,7 +13,7 @@ const ProfSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    childExp:{
+    expenses:{
         type: Number,
         required: true,
     },
@@ -23,6 +23,10 @@ const ProfSchema = new mongoose.Schema({
     },
     house:{
         type: String,
+        required: true,
+    },
+    age:{
+        type: Number,
         required: true,
     },
 },{

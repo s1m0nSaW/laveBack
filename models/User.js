@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 100,
     },
+    age:{
+        type: Number,
+        required: true,
+    },
     house: {
         type: Array,
         default: [],
@@ -26,19 +30,7 @@ const UserSchema = new mongoose.Schema({
         type: Array,
         default: [],
     },
-    credit: {
-        type: Array,
-        default: [],
-    },
     bizs: {
-        type: Array,
-        default: [],
-    },
-    manager: {
-        type: Array,
-        default: [],
-    },
-    estate: {
         type: Array,
         default: [],
     },
