@@ -11,9 +11,12 @@ export const register =  async (req,res)=>{
         userId: req.body.userId,
         balance: req.body.balance,
         age: req.body.age,
+        children: req.body.children,
         house: req.body.house.split(','),
         car: req.body.car.split(','),
         bizs: req.body.bizs.split(','),
+        datePoint: req.body.datePoint,
+        onGame: req.body.onGame,
     });
 
     const user = await doc.save();
@@ -47,9 +50,12 @@ export const update =  async (req,res)=>{
             userId: req.body.userId,
             balance: req.body.balance,
             age: req.body.age,
+            children: req.body.children,
             house: req.body.house.split(','),
             car: req.body.car.split(','),
             bizs: req.body.bizs.split(','),
+            datePoint: req.body.datePoint,
+            onGame: req.body.onGame,
         });
     
         res.json({
@@ -96,7 +102,7 @@ export const login = async (req,res)=>{
 
 export const getMe = async (req,res)=>{
     try{
-        const user = await UserModel.findOne( {userId: req.body.userId});
+        const user = await UserModel.findOne( {userId: req.params.id});
 
         if (!user) {
             return res.status(404).json({
@@ -112,6 +118,19 @@ export const getMe = async (req,res)=>{
         });
     }
 };
+
+export const getAll = async (req,res) => {
+    try {
+        const users = await UserModel.find().exec();
+
+        res.json(users);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            message: 'Не удалось найти',
+        });
+    }
+}
 
 export const remove = async (req,res) => {
     try {

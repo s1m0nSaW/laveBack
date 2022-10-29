@@ -45,7 +45,8 @@ app.post('/upload', upload.single('image'), (req,res) => {
 
 app.post('/auth/login', UserController.login);
 app.post('/auth/register', UserController.register);
-app.get('/auth/me',UserController.getMe);
+app.get('/auth/me/:id',UserController.getMe);
+app.get('/auth/users',UserController.getAll);
 app.patch('/auth/:id',UserController.update);
 app.delete('/auth/:id',UserController.remove);
 

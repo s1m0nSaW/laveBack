@@ -5,10 +5,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    prof:{
-        type: String,
-        required: true,
-    },
+    prof:String,
     userId:{
         type: String,
         required: true,
@@ -19,6 +16,10 @@ const UserSchema = new mongoose.Schema({
         default: 100,
     },
     age:{
+        type: Number,
+        required: true,
+    },
+    children:{
         type: Number,
         required: true,
     },
@@ -34,6 +35,8 @@ const UserSchema = new mongoose.Schema({
         type: Array,
         default: [],
     },
+    datePoint:Date,
+    onGame:Boolean,
 },{
     timestamps:true,
 },
