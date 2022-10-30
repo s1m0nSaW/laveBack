@@ -32,10 +32,11 @@ export const create = async (req,res) => {
     try {
         const doc = new CarModel
         ({
-            carName: req.body.carName,
+            name: req.body.name,
             price: req.body.price,
-            carExp: req.body.carExp,
+            expenses: req.body.expenses,
             imageUrl: req.body.imageUrl,
+            sellPrice: req.body.sellPrice,
         });
 
         const car = await doc.save();
@@ -55,10 +56,11 @@ export const update = async (req,res) => {
         .updateOne({
             _id: req.params.id
         },{
-            carName: req.body.carName,
+            name: req.body.name,
             price: req.body.price,
-            carExp: req.body.carExp,
+            expenses: req.body.expenses,
             imageUrl: req.body.imageUrl,
+            sellPrice: req.body.sellPrice,
         });
 
         res.json({

@@ -1,15 +1,15 @@
 import mongoose from "mongoose";
 
 const HouseSchema = new mongoose.Schema({
-    houseName:{
+    name:{
         type: String,
         required: true,
     },
-    housePrice:{
+    price:{
         type: Number,
         required: true,
     },
-    houseExp:{
+    expenses:{
         type: Number,
         required: true,
     },

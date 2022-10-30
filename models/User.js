@@ -5,7 +5,8 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    prof:String,
+    prof: String,
+    salary: Number,
     userId:{
         type: String,
         required: true,
@@ -35,6 +36,7 @@ const UserSchema = new mongoose.Schema({
         type: Array,
         default: [],
     },
+    expenses:Number,
     datePoint:Date,
     onGame:Boolean,
 },{

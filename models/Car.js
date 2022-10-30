@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const CarSchema = new mongoose.Schema({
-    carName:{
+    name:{
         type: String,
         required: true,
     },
@@ -9,11 +9,12 @@ const CarSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    carExp:{
+    expenses:{
         type: Number,
         required: true,
     },
     imageUrl: String,
+    sellPrice: Number,
 },{
     timestamps:true,
 },

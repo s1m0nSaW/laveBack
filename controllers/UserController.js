@@ -8,6 +8,7 @@ export const register =  async (req,res)=>{
     const doc = new UserModel({
         firstName: req.body.firstName,
         prof: req.body.prof,
+        salary: req.body.salary,
         userId: req.body.userId,
         balance: req.body.balance,
         age: req.body.age,
@@ -17,6 +18,7 @@ export const register =  async (req,res)=>{
         bizs: req.body.bizs.split(','),
         datePoint: req.body.datePoint,
         onGame: req.body.onGame,
+        expenses: req.body.expenses,
     });
 
     const user = await doc.save();
@@ -42,25 +44,25 @@ export const register =  async (req,res)=>{
 
 export const update =  async (req,res)=>{
     try{
-        await UserModel.updateOne({
+        const user = await UserModel.updateOne({
             _id: req.params.id
         },{
             firstName: req.body.firstName,
             prof: req.body.prof,
+            salary: req.body.salary,
             userId: req.body.userId,
             balance: req.body.balance,
             age: req.body.age,
             children: req.body.children,
-            house: req.body.house.split(','),
-            car: req.body.car.split(','),
-            bizs: req.body.bizs.split(','),
+            house: req.body.house,
+            car: req.body.car,
+            bizs: req.body.bizs,
             datePoint: req.body.datePoint,
             onGame: req.body.onGame,
+            expenses: req.body.expenses,
         });
     
-        res.json({
-            success: true,
-        });
+        res.json({success: true});
     
     } catch(err){
         console.log(err);

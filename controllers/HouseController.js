@@ -32,9 +32,9 @@ export const create = async (req,res) => {
     try {
         const doc = new HouseModel
         ({
-            houseName: req.body.houseName,
-            housePrice: req.body.housePrice,
-            houseExp: req.body.houseExp,
+            name: req.body.name,
+            price: req.body.price,
+            expenses: req.body.expenses,
             imageUrl: req.body.imageUrl,
         });
 
@@ -55,9 +55,9 @@ export const update = async (req,res) => {
         .updateOne({
             _id: req.params.id
         },{
-            houseName: req.body.houseName,
-            housePrice: req.body.housePrice,
-            houseExp: req.body.houseExp,
+            name: req.body.name,
+            price: req.body.price,
+            expenses: req.body.expenses,
             imageUrl: req.body.imageUrl,
         });
 
