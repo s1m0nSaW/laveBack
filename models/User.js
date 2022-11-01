@@ -36,6 +36,10 @@ const UserSchema = new mongoose.Schema({
         type: Array,
         default: [],
     },
+    friends: {
+        type: Array,
+        default: [],
+    },
     expenses:Number,
     datePoint:Date,
     onGame:Boolean,

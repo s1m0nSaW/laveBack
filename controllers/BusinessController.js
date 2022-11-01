@@ -31,10 +31,10 @@ export const create = async (req,res) => {
         const doc = new BusinessModel({
             bizName: req.body.bizName,
             bizPrice: req.body.bizPrice,
-            bizType: req.body.bizType,
-            location: req.body.location,
-            workersCount: req.body.workersCount,
-            profit: req.body.profit,
+            sellPrice: req.body.sellPrice,
+            maxProfit: req.body.maxProfit,
+            minProfit: req.body.minProfit,
+            risk: req.body.risk,
             imageUrl: req.body.imageUrl,
         });
 
@@ -56,10 +56,10 @@ export const update = async (req,res) => {
         },{
             bizName: req.body.bizName,
             bizPrice: req.body.bizPrice,
-            bizType: req.body.bizType,
-            location: req.body.location,
-            workersCount: req.body.workersCount,
-            profit: req.body.profit,
+            sellPrice: req.body.sellPrice,
+            maxProfit: req.body.maxProfit,
+            minProfit: req.body.minProfit,
+            risk: req.body.risk,
             imageUrl: req.body.imageUrl,
         });
 

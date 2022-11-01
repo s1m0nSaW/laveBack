@@ -9,20 +9,20 @@ const BusSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    bizType:{
+    sellPrice:{
         type: Number,
         required: true,
     },
-    location:{
+    maxProfit:{
+        type: Number,
+        required: true,
+    },
+    minProfit:{
+        type: Number,
+        required: true,
+    },
+    risk:{
         type: String,
-        required: true,
-    },
-    workersCount:{
-        type: Number,
-        required: true,
-    },
-    profit:{
-        type: Number,
         required: true,
     },
     imageUrl: String,
