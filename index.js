@@ -13,7 +13,7 @@ import * as ProfController from './controllers/ProfController.js';
 const URL = 'mongodb+srv://admin:cK6e_CNLJc-8K9p@cluster0.mjknbht.mongodb.net/blog?retryWrites=true&w=majority';
 
 mongoose
-    .connect(URL)
+    .connect('mongodb://localhost/lave')
     .then(() => console.log('DB ok'))
     .catch((err) => console.log('DB error ' + err));
 
