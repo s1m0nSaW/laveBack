@@ -6,14 +6,17 @@ import checkAuth from './utils/checkAuth.js';
 
 import * as UserController from './controllers/UserController.js';
 import * as BusinessController from './controllers/BusinessController.js';
+import * as ManagerController from './controllers/ManagerController.js';
 import * as CarController from './controllers/CarController.js';
 import * as HouseController from './controllers/HouseController.js';
 import * as ProfController from './controllers/ProfController.js';
 
 const URL = 'mongodb+srv://admin:cK6e_CNLJc-8K9p@cluster0.mjknbht.mongodb.net/blog?retryWrites=true&w=majority';
+const URL2 = 'mongodb://admin:PUj*60wD@localhost/admin'
+const URL3 = 'mongodb://localhost:27017/finfree'
 
 mongoose
-    .connect('mongodb://admin:ii8g&9jD@localhost/admin')
+    .connect('mongodb://localhost:27017/finfree')
     .then(() => console.log('DB ok'))
     .catch((err) => console.log('DB error ' + err));
 
@@ -52,6 +55,12 @@ app.get('/bizs/:id',BusinessController.getOne);
 app.post('/bizs',BusinessController.create);
 app.delete('/bizs/:id',BusinessController.remove);
 app.patch('/bizs/:id',BusinessController.update);
+
+app.get('/managers', ManagerController.getAll);
+app.get('/managers/:id',ManagerController.getOne);
+app.post('/managers',ManagerController.create);
+app.delete('/managers/:id',ManagerController.remove);
+app.patch('/managers/:id',ManagerController.update);
 
 app.get('/cars', CarController.getAll);
 app.get('/cars/:id',CarController.getOne);

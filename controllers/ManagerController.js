@@ -1,10 +1,10 @@
-import BusinessModel from "../models/Business.js";
+import ManagerModel from "../models/Manager.js";
 
 export const getAll = async (req,res) => {
     try {
-        const bizs = await BusinessModel.find().exec();
+        const managers = await ManagerModel.find().exec();
 
-        res.json(bizs);
+        res.json(managers);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -15,9 +15,9 @@ export const getAll = async (req,res) => {
 
 export const getOne = async (req,res) => {
     try {
-        const business = await BusinessModel.find({ _id: req.params.id}).exec();
+        const manager = await ManagerModel.find({ _id: req.params.id}).exec();
 
-        res.json(business);
+        res.json(manager);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -28,22 +28,18 @@ export const getOne = async (req,res) => {
 
 export const create = async (req,res) => {
     try {
-        const doc = new BusinessModel({
-            bizName: req.body.bizName,
+        const doc = new ManagerModel({
+            name: req.body.name,
+            salary: req.body.salary,
+            userId: req.body.userId,
+            bizCount: req.body.bizCount,
             bizType: req.body.bizType,
-            bizPrice: req.body.bizPrice,
-            sellPrice: req.body.sellPrice,
-            maxProfit: req.body.maxProfit,
-            minProfit: req.body.minProfit,
-            risk: req.body.risk,
-            requiredEnergy: req.body.requiredEnergy,
-            requiredTime: req.body.requiredTime,
-            imageUrl: req.body.imageUrl,
+            bizs: req.body.bizs,
         });
 
-        const business = await doc.save();
+        const manager = await doc.save();
 
-        res.json(business);
+        res.json(manager);
     } catch (err) {
         console.log(err);
         res.status(500).json({
@@ -54,19 +50,15 @@ export const create = async (req,res) => {
 
 export const update = async (req,res) => {
     try {
-        await BusinessModel.updateOne({
+        await ManagerModel.updateOne({
             _id: req.params.id
         },{
-            bizName: req.body.bizName,
+            name: req.body.name,
+            salary: req.body.salary,
+            userId: req.body.userId,
+            bizCount: req.body.bizCount,
             bizType: req.body.bizType,
-            bizPrice: req.body.bizPrice,
-            sellPrice: req.body.sellPrice,
-            maxProfit: req.body.maxProfit,
-            minProfit: req.body.minProfit,
-            risk: req.body.risk,
-            requiredEnergy: req.body.requiredEnergy,
-            requiredTime: req.body.requiredTime,
-            imageUrl: req.body.imageUrl,
+            bizs: req.body.bizs,
         });
 
         res.json({
@@ -82,7 +74,7 @@ export const update = async (req,res) => {
 
 export const remove = async (req,res) => {
     try {
-        BusinessModel.findOneAndDelete(
+        ManagerModel.findOneAndDelete(
             {
                 _id: req.params.id,
             },
@@ -96,7 +88,7 @@ export const remove = async (req,res) => {
 
                 if (!doc){
                     return res.status(404).json({
-                        message: 'Бизнес не найден'
+                        message: 'Менеджер не найден'
                     });
                 }
 

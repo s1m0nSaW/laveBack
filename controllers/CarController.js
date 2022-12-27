@@ -33,7 +33,10 @@ export const create = async (req,res) => {
         const doc = new CarModel
         ({
             name: req.body.name,
+            energy: req.body.energy,
+            time: req.body.time,
             price: req.body.price,
+            rentPrice: req.body.rentPrice,
             expenses: req.body.expenses,
             imageUrl: req.body.imageUrl,
             sellPrice: req.body.sellPrice,
@@ -57,7 +60,10 @@ export const update = async (req,res) => {
             _id: req.params.id
         },{
             name: req.body.name,
+            energy: req.body.energy,
+            time: req.body.time,
             price: req.body.price,
+            rentPrice: req.body.rentPrice,
             expenses: req.body.expenses,
             imageUrl: req.body.imageUrl,
             sellPrice: req.body.sellPrice,

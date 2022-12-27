@@ -5,6 +5,18 @@ const CarSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    energy:{
+        type: Number,
+        required: true,
+    },
+    time:{
+        type: Number,
+        required: true,
+    },
+    rentPrice:{
+        type: Number,
+        required: true,
+    },
     price:{
         type: Number,
         required: true,

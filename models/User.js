@@ -32,17 +32,49 @@ const UserSchema = new mongoose.Schema({
         type: Array,
         default: [],
     },
+    rent: {
+        type: Array,
+        default: [],
+    },
     bizs: {
         type: Array,
         default: [],
     },
-    friends: {
+    deposit:{
+        type: Number,
+        default: 0,
+    },
+    credits:{
+        type: Array,
+        default: [],
+    },
+    mortgages:{
         type: Array,
         default: [],
     },
     expenses:Number,
     datePoint:Date,
     onGame:Boolean,
+    time:{
+        type: Number,
+        default: 10,
+    },
+    energy:{
+        type: Number,
+        default: 100,
+    },
+    maxEnergy:{
+        type: Number,
+        default: 100,
+    },
+    energizer:{
+        type: Number,
+        default: 0,
+    },
+    lifesCount:{
+        type: Number,
+        default: 1,
+    },
 },{
     timestamps:true,
 },

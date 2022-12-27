@@ -15,11 +15,19 @@ export const register =  async (req,res)=>{
         children: req.body.children,
         house: req.body.house,
         car: req.body.car,
+        rent: req.body.rent,
         bizs: req.body.bizs,
-        friends: req.body.friends,
+        deposit: req.body.deposit,
         datePoint: req.body.datePoint,
         onGame: req.body.onGame,
+        credits: req.body.credits,
+        mortgages: req.body.mortgages,
         expenses: req.body.expenses,
+        energy: req.body.energy,
+        time: req.body.time,
+        maxEnergy: req.body.maxEnergy,
+        energizer: req.body.energizer,
+        lifesCount: req.body.lifesCount,
     });
 
     const user = await doc.save();
@@ -57,11 +65,19 @@ export const update =  async (req,res)=>{
             children: req.body.children,
             house: req.body.house,
             car: req.body.car,
+            rent: req.body.rent,
             bizs: req.body.bizs,
-            friends: req.body.friends,
+            deposit: req.body.deposit,
             datePoint: req.body.datePoint,
             onGame: req.body.onGame,
+            credits: req.body.credits,
+            mortgages: req.body.mortgages,
             expenses: req.body.expenses,
+            energy: req.body.energy,
+            time: req.body.time,
+            maxEnergy: req.body.maxEnergy,
+            energizer: req.body.energizer,
+            lifesCount: req.body.lifesCount,
         });
     
         res.json({success: true});

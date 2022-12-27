@@ -5,6 +5,10 @@ const BusSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    bizType:{
+        type: String,
+        required: true,
+    },
     bizPrice:{
         type: Number,
         required: true,
@@ -25,6 +29,8 @@ const BusSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    requiredEnergy: Number,
+    requiredTime: Number,
     imageUrl: String,
 },{
     timestamps:true,
