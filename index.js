@@ -16,7 +16,7 @@ const URL2 = 'mongodb://admin:PUj*60wD@localhost/admin'
 const URL3 = 'mongodb://localhost:27017/finfree'
 
 mongoose
-    .connect('mongodb://localhost:27017/finfree')
+    .connect('mongodb://127.0.0.1:27017/finfree')
     .then(() => console.log('DB ok'))
     .catch((err) => console.log('DB error ' + err));
 

@@ -5,7 +5,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    prof: String,
+    prof: String, 
+    workTime: {
+        type: Number,
+        default: 8,
+    },
     salary: Number,
     userId:{
         type: String,
@@ -15,6 +19,10 @@ const UserSchema = new mongoose.Schema({
     balance: {
         type: Number,
         default: 100,
+    },
+    debts: {
+        type: Number,
+        default: 0,
     },
     age:{
         type: Number,
@@ -41,19 +49,33 @@ const UserSchema = new mongoose.Schema({
         default: [],
     },
     deposit:{
-        type: Number,
-        default: 0,
+        amount: Number,
+        date: Number,
     },
     credits:{
         type: Array,
         default: [],
     },
-    mortgages:{
-        type: Array,
-        default: [],
+    record:{
+        age: Number,
+        prof: String,
+        cashflow: Number,
+        bizCount: Number,
+        deposit: Number,
+        rentCount: Number,
+        houseSumm: Number,
+        carSum: Number,
     },
     expenses:Number,
     datePoint:Date,
+    freeEnergizer:{
+        type: Number,
+        default: 0,
+    },
+    freeEnergizerCount:{
+        type: Number,
+        default: 2,
+    },
     onGame:Boolean,
     time:{
         type: Number,
@@ -71,10 +93,32 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    freeEnergizerOn:{
+        type: Boolean,
+        default: true,
+    },
     lifesCount:{
         type: Number,
         default: 1,
     },
+    greetingIn:{
+        type: Array,
+        default: [],
+    },
+    greetingOut:{
+        type: Array,
+        default: [],
+    },
+    disabled:{
+        type: Array,
+        default: [],
+    },
+    promoter:{
+        type: Boolean,
+        default: false,
+    },
+    photo100: String,
+
 },{
     timestamps:true,
 },
