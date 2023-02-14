@@ -67,7 +67,7 @@ const UserSchema = new mongoose.Schema({
         carSum: Number,
     },
     expenses:Number,
-    datePoint:Date,
+    datePoint:Number,
     freeEnergizer:{
         type: Number,
         default: 0,
