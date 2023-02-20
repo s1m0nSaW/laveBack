@@ -11,12 +11,27 @@ import * as CarController from './controllers/CarController.js';
 import * as HouseController from './controllers/HouseController.js';
 import * as ProfController from './controllers/ProfController.js';
 
-const URL = 'mongodb+srv://admin:cK6e_CNLJc-8K9p@cluster0.mjknbht.mongodb.net/blog?retryWrites=true&w=majority';
-const URL2 = 'mongodb://admin:PUj*60wD@localhost/admin'
-const URL3 = 'mongodb://localhost:27017/finfree'
+const {
+    MONGO_USERNAME,
+    MONGO_PASSWORD,
+    MONGO_HOSTNAME,
+    MONGO_PORT,
+    MONGO_DB
+  } = process.env;
+
+const port = process.env.PORT || 8080
+
+const options = {
+    useNewUrlParser: true,
+    reconnectTries: Number.MAX_VALUE,
+    reconnectInterval: 500,
+    connectTimeoutMS: 10000,
+  };
+
+const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
 
 mongoose
-    .connect('mongodb://127.0.0.1:27017/finfree')
+    .connect(url, options)
     .then(() => console.log('DB ok'))
     .catch((err) => console.log('DB error ' + err));
 
@@ -81,10 +96,10 @@ app.delete('/profs/:id',ProfController.remove);
 app.patch('/profs/:id',ProfController.update);
 
 
-app.listen(4444, (err) => {
+app.listen(port, (err) => {
     if (err) {
         return console.log(err);
     }
 
-    console.log('Server OK');
+    console.log(`Example app listening on ${port}!`);
 });
