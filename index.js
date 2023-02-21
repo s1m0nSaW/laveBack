@@ -30,8 +30,10 @@ const options = {
 
 const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
 
+mongoose.set("strictQuery", false);
+
 mongoose
-    .connect(url, options)
+    .connect(`mongodb://finfreedb:27017/admin`)
     .then(() => console.log('DB ok'))
     .catch((err) => console.log('DB error ' + err));
 
