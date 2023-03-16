@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema({
     },
     balance: {
         type: Number,
-        default: 100,
+        default: 500,
     },
     debts: {
         type: Number,
@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema({
     },
     children:{
         type: Number,
-        required: true,
+        default: 0,
     },
     house: {
         type: Array,
@@ -39,6 +39,16 @@ const UserSchema = new mongoose.Schema({
     car: {
         type: Array,
         default: [],
+    },
+    carsharing: {
+        status: {
+            type: Boolean,
+            default: false,
+        },
+        date: {
+            type: Number,
+            default: 0,
+        },
     },
     rent: {
         type: Array,
@@ -49,25 +59,58 @@ const UserSchema = new mongoose.Schema({
         default: [],
     },
     deposit:{
-        amount: Number,
-        date: Number,
+        amount: {
+            type: Number,
+            default: 0,
+        },
+        date: {
+            type: Number,
+            default: 0,
+        },
     },
     credits:{
         type: Array,
         default: [],
     },
     record:{
-        age: Number,
+        age: {
+            type: Number,
+            default: 0,
+        },
         prof: String,
-        cashflow: Number,
-        bizCount: Number,
-        deposit: Number,
-        rentCount: Number,
-        houseSumm: Number,
-        carSum: Number,
+        cashflow: {
+            type: Number,
+            default: 0,
+        },
+        bizCount: {
+            type: Number,
+            default: 0,
+        },
+        deposit: {
+            type: Number,
+            default: 0,
+        },
+        rentCount: {
+            type: Number,
+            default: 0,
+        },
+        houseSumm: {
+            type: Number,
+            default: 0,
+        },
+        carSum: {
+            type: Number,
+            default: 0,
+        },
     },
-    expenses:Number,
-    datePoint:Number,
+    expenses:{
+        type: Number,
+        default: 0,
+    },
+    datePoint:{
+        type: Number,
+        default: 0,
+    },
     freeEnergizer:{
         type: Number,
         default: 0,
@@ -76,7 +119,10 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 2,
     },
-    onGame:Boolean,
+    onGame:{
+        type: Boolean,
+        default: true,
+    },
     time:{
         type: Number,
         default: 10,
@@ -99,7 +145,7 @@ const UserSchema = new mongoose.Schema({
     },
     lifesCount:{
         type: Number,
-        default: 1,
+        default: 0,
     },
     greetingIn:{
         type: Array,

@@ -32,6 +32,8 @@ const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${M
 
 mongoose.set("strictQuery", false);
 
+const mongooseUrl = `mongodb://localhost:27017`
+
 mongoose
     .connect(`mongodb://finfreedb:27017/admin`)
     .then(() => console.log('DB ok'))
@@ -61,10 +63,11 @@ app.post('/upload', upload.single('image'), (req,res) => {
 });
 
 app.post('/auth/login', UserController.login);
-app.post('/auth/register', UserController.register);
-app.get('/auth/me/:id',UserController.getMe);
-app.get('/auth/users',UserController.getAll);
+app.post('/auth/register/:params', checkAuth, UserController.register);
+app.get('/auth/me/:params', checkAuth, UserController.getMe);
+app.get('/auth/users', UserController.getAll);
 app.patch('/auth/:id',UserController.update);
+app.patch('/auth/new/:params', checkAuth, UserController.newGame);
 app.delete('/auth/:id',UserController.remove);
 
 app.get('/bizs', BusinessController.getAll);
@@ -103,5 +106,5 @@ app.listen(port, (err) => {
         return console.log(err);
     }
 
-    console.log(`Example app listening on ${port}!`);
+    console.log(`App listening on ${port}!`);
 });
